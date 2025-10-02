@@ -1,31 +1,16 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
 df = sns.load_dataset("titanic")
-# print(df.head())
-# print(df.info())
-# print(df.describe())
+# print(df.groupby("sex")['survived'].mean())
+print(df.groupby(['sex', 'class'])['survived'].agg(['mean', 'count']))
 
 # plt.figure(figsize=(8, 4))
-# sns.histplot(data=df, x="age", bins=16, kde=True)
-# plt.title("Age Distribution of Passengers")
-# plt.ylabel("Frequency")
-# plt.xlabel("Age")
-# # plt.tight_layout()
-# plt.show()
-
-# plt.figure(figsize=(8, 4))
-# sns.countplot(data=df, x="survived")
-# plt.title("Survivors vs Non-survivors", fontsize=14)
-# plt.xlabel("Survived (0: No, 1: Yes)")
+# sns.countplot(data=df, x="sex", hue="survived")
+# plt.legend(loc="upper right", title="Survived", labels=["No", "Yes"])
+# plt.title("Survival Status by Gender", fontsize=14)
+# plt.xlabel("Sex")
 # plt.ylabel("Count")
-# # plt.tight_layout()
-# plt.show()
-
-plt.figure(figsize=(8, 4))
-sns.countplot(data=df, x="class", order=["First", "Second", "Third"])
-plt.title("Passenger Count by Class", fontsize=14)
-plt.xlabel("class")
-plt.ylabel("Count")
 # plt.tight_layout()
-plt.show()
+# plt.show()
